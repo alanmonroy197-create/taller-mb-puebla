@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pre-Diagnóstico Técnico Especializado | Mercedes-Benz Puebla</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            obsidian: '#0B0D10',
+            slateDark: '#13171F',
+            slateCard: '#181E29',
+            silverMetal: '#C4C9D4',
+            techBlue: '#0078D6',
+            techBlueHover: '#0063B1',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B0D10;
+      color: #F3F4F6;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mb-border { border-color: rgba(196, 201, 212, 0.15); }
+    .mb-input {
+      background-color: #13171F;
+      border: 1px solid rgba(196, 201, 212, 0.25);
+      color: #FFFFFF;
+      transition: all 0.25s ease;
+    }
+    .mb-input:focus {
+      outline: none;
+      border-color: #0078D6;
+      box-shadow: 0 0 0 3px rgba(0, 120, 214, 0.25);
+    }
+    .glass-panel {
+      background: linear-gradient(145deg, #161C26 0%, #0E1219 100%);
+      border: 1px solid rgba(196, 201, 212, 0.15);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+    }
+    input[type="checkbox"]:checked + div, input[type="radio"]:checked + div {
+      border-color: #0078D6;
+      background-color: rgba(0, 120, 214, 0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between py-6 px-3 sm:px-6 lg:px-8">
+
+  <!-- ENCABEZADO ESTILO BOUTIQUE MERCEDES-BENZ PUEBLA -->
+  <header class="max-w-3xl mx-auto w-full text-center mb-6">
+    <div class="inline-flex w-14 h-14 rounded-full border border-silverMetal/40 items-center justify-center bg-gradient-to-b from-slateCard to-obsidian shadow-inner mb-3">
+      <svg class="w-8 h-8 text-silverMetal" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3.5">
+        <circle cx="50" cy="50" r="44" />
+        <path d="M50 6 L50 50 L13 72 M50 50 L87 72" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <span class="block text-[10px] font-semibold tracking-[0.3em] text-techBlue uppercase mb-1">Mercedes-Benz Puebla · Master Diagnostics</span>
+    <h1 class="text-xl sm:text-2xl font-serif font-bold text-white tracking-wide">
+      Formulario de Pre-Diagnóstico Técnico Integral
+    </h1>
+    <p class="text-xs text-silverMetal/70 mt-2 max-w-xl mx-auto leading-relaxed">
+      Cuestionario de ingeniería avanzado diseñado por nuestros técnicos expertos. Proporcione los detalles precisos y adjunte evidencia para preparar el sistema <strong>Xentry Diagnosis</strong> antes de su llegada al taller.
+    </p>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL RESPONSIVO -->
+  <main class="max-w-3xl mx-auto w-full glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-8 mb-6">
+    <form id="preDiagForm" onsubmit="submitPreDiagnosis(event)" class="space-y-6">
+
+      <!-- 1. MODELO Y CLASE -->
+      <div class="space-y-2">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal">
+          1. Clase / Modelo Específico del Vehículo (Ej. C 300, GLC 43 AMG, GLE 450...)
+        </label>
+        <input type="text" id="carModel" placeholder="Ej. Clase C 2023, GLE 300..." class="w-full px-4 py-3 rounded-xl text-sm mb-input" required />
+      </div>
+
+      <!-- 2. SÍNTOMAS TÉCNICOS ESPECÍFICOS -->
+      <div class="space-y-2">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal">
+          2. ¿Qué categoría de síntoma o anomalía describe mejor lo que percibe? (Seleccione una o varias)
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Motor: Pérdida de potencia / Modo de emergencia (Limp Home)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50 peer-checked:bg-techBlue"></span>
+              Motor: Pérdida de potencia / Modo emergencia
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Motor: Ruidos metálicos / Cascabeleo / Tictac al arrancar" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Motor: Ruidos metálicos / Tictac al encender
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Transmisión: Tirones bruscos en cambios de marcha (1ª a 3ª)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Transmisión: Tirones bruscos en cambios
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Transmisión: Retardo al aplicar Reversa (R) o Directa (D)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Transmisión: Retardo al aplicar R o D
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Suspensión / Dirección: Ruidos en baches / Golpes secos" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Suspensión / Dirección: Golpes en baches
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Frenos: Vibración en volante al frenar / Chillidos" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Frenos: Vibración al frenar / Chillidos
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Electrónica: Fallas MBUX / Sensores de estacionamiento" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Electrónica: Pantalla MBUX / Sensores
+            </div>
+          </label>
+          <label class="cursor-pointer">
+            <input type="checkbox" name="symptom_area" value="Clima / Fugas: Aire acondicionado tibio / Fuga de fluidos" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex items-center gap-3 transition">
+              <span class="w-2 h-2 rounded-full bg-techBlue/50"></span>
+              Clima / Fugas: A/C tibio o fuga de fluidos
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- 3. TESTIGOS EN TABLERO (CON ICONOS / REPRESENTACIÓN VISUAL) -->
+      <div class="space-y-3 pt-3 border-t mb-border">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal">
+          3. Testigos o Advertencias en Tablero (Seleccione si alguno se encuentra encendido)
+        </label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Check Engine (Falla Motor)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">⚠️</span>
+              <span class="font-medium text-[11px]">Check Engine</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="ABS / ESP (Control Tracción/Frenos)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">🛞</span>
+              <span class="font-medium text-[11px]">ABS / ESP</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Batería / Sistema Eléctrico (Alternador)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">🔋</span>
+              <span class="font-medium text-[11px]">Batería / Carga</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Presión de Neumáticos (TPMS)" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">🛑</span>
+              <span class="font-medium text-[11px]">Presión Llantas</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Temperatura de Motor Elevada" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">🌡️</span>
+              <span class="font-medium text-[11px]">Temperatura Alta</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Sistema de Frenos / Balatas desgastadas" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">🛑</span>
+              <span class="font-medium text-[11px]">Frenos / Balatas</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Airbag / Sistema de Retención SRS" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">🛡️</span>
+              <span class="font-medium text-[11px]">Airbag / SRS</span>
+            </div>
+          </label>
+          <label class="cursor-pointer text-center">
+            <input type="checkbox" name="warning_lights" value="Ningún testigo encendido" class="hidden peer" />
+            <div class="p-3 rounded-xl border border-silverMetal/20 text-xs text-silverMetal flex flex-col items-center gap-1.5 transition">
+              <span class="text-lg">⚪</span>
+              <span class="font-medium text-[11px]">Sin Testigos</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- 4. ADJUNTAR FOTOS O VIDEOS DE EVIDENCIA -->
+      <div class="space-y-2 pt-3 border-t mb-border">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal">
+          4. Adjuntar Evidencia (Foto del testigo en tablero o video corto del ruido/anomalía)
+        </label>
+        <div class="p-4 rounded-xl border border-dashed border-silverMetal/30 bg-obsidian/50 text-center">
+          <input type="file" id="mediaFile" accept="image/*,video/*" class="w-full text-xs text-silverMetal file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-techBlue file:text-white hover:file:bg-techBlueHover file:cursor-pointer cursor-pointer" />
+          <p class="text-[11px] text-silverMetal/60 mt-2">Formatos permitidos: JPG, PNG, MP4, MOV (Máx. 25MB). Ayuda al técnico a identificar la falla de inmediato.</p>
+        </div>
+      </div>
+
+      <!-- 5. CUESTIONARIO TÉCNICO PROFUNDO -->
+      <div class="space-y-4 pt-3 border-t mb-border">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal">
+          5. Cuestionario Técnico de Ingeniería (Condiciones exactas de la falla)
+        </label>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] text-silverMetal/80 mb-1">¿Cuándo se presenta con mayor intensidad?</label>
+            <select id="condTemp" class="w-full px-3 py-2.5 rounded-xl text-xs mb-input">
+              <option value="Indiferente / Ocurre siempre">Indiferente / Ocurre en todo momento</option>
+              <option value="Solo en frío (primeros minutos de encendido)">Solo en frío (primeros minutos de encendido)</option>
+              <option value="Solo cuando el motor ya está a temperatura de operación (caliente)">Solo con motor caliente</option>
+              <option value="Al ralenti (detenido en semáforo)">Solo al estar detenido en ralentí</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] text-silverMetal/80 mb-1">Condición de velocidad o camino</label>
+            <select id="condRoad" class="w-full px-3 py-2.5 rounded-xl text-xs mb-input">
+              <option value="A cualquier velocidad">A cualquier velocidad / Indiferente</option>
+              <option value="Solo a baja velocidad / maniobras de estacionamiento">Solo a baja velocidad / estacionamiento</option>
+              <option value="A velocidad de autopista (más de 90 km/h)">A velocidad de autopista (> 90 km/h)</option>
+              <option value="Al pasar por baches, topes o caminos rugosos">Al pasar por baches, topes o caminos rugosos</option>
+              <option value="Al acelerar a fondo (realizando rebase)">Al acelerar a fondo (kick-down)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] text-silverMetal/80 mb-1">Factor ambiental o climático</label>
+            <select id="condWeather" class="w-full px-3 py-2.5 rounded-xl text-xs mb-input">
+              <option value="Sin relación con el clima">Sin relación con el clima</option>
+              <option value="Solo cuando llueve o hay alta humedad">Solo cuando llueve o hay humedad</option>
+              <option value="Con calor ambiental extremo">Con calor ambiental extremo</option>
+              <option value="Por las mañanas con presencia de humedad o frío">Por las mañanas con frío / humedad</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] text-silverMetal/80 mb-1">¿El problema inició tras algún evento?</label>
+            <select id="condTrigger" class="w-full px-3 py-2.5 rounded-xl text-xs mb-input">
+              <option value="Apareció de la nada / espontáneo">Apareció de la nada / espontáneo</option>
+              <option value="Tras pasar un bache fuerte o impacto">Tras pasar un bache fuerte o impacto</option>
+              <option value="Después de un servicio o reparación previa">Después de un servicio o reparación previa</option>
+              <option value="Tras una carga de combustible">Tras una carga reciente de combustible</option>
+              <option value="Tras lavar el vehículo o motor">Tras lavar el vehículo</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. ANTIGÜEDAD Y FRECUENCIA -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t mb-border">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal mb-1.5">
+            6. ¿Desde hace cuánto tiempo o cuántos kilómetros notó la falla?
+          </label>
+          <input type="text" id="timeElapsed" placeholder="Ej. Hace 3 días, desde la semana pasada..." class="w-full px-3.5 py-2.5 rounded-xl text-xs mb-input" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal mb-1.5">
+            7. Frecuencia de aparición
+          </label>
+          <select id="frequency" class="w-full px-3.5 py-2.5 rounded-xl text-xs mb-input">
+            <option value="Permanente en cada uso (se puede reproducir siempre)">Permanente en cada uso (se reproduce siempre)</option>
+            <option value="Intermitente (falla un día y al siguiente no)">Intermitente (falla un día y al siguiente no)</option>
+            <option value="Ocurre de forma muy esporádica (una vez por semana)">Esporádica (una vez por semana o menos)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 8. DESCRIPCIÓN LIBRE DEL CLIENTE -->
+      <div class="space-y-3 pt-3 border-t mb-border">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal mb-1.5">
+            8. Describa con sus propias palabras cómo se manifiesta el problema (detalles clave)
+          </label>
+          <textarea id="freeDescription" rows="3" placeholder="Ej. Al encender el auto por la mañana se escucha un zumbido metálico durante 5 segundos y luego desaparece..." class="w-full p-3.5 rounded-xl text-xs mb-input leading-relaxed"></textarea>
+        </div>
+      </div>
+
+      <!-- 9. TÉRMINOS, CONDICIONES Y POLÍTICAS DEL TALLER (OBLIGATORIO) -->
+      <div class="space-y-3 pt-3 border-t mb-border bg-obsidian/60 p-4 rounded-xl border border-techBlue/30">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-techBlue">
+          📋 Políticas de Servicio, Costos y Tiempos en Taller (Mercedes-Benz Puebla)
+        </h3>
+        <div class="text-[11px] text-silverMetal/90 space-y-2 leading-relaxed text-justify">
+          <p>• <strong>Recorrido con el Jefe de Taller:</strong> En caso de ruidos o problemas intermitentes, <strong>será necesario realizar un recorrido con el Jefe de Taller</strong> el día de su visita para reproducir y diagnosticar correctamente la falla.</p>
+          <p>• <strong>Costo de Diagnóstico e Inicialización:</strong> Un diagnóstico inicial tiene un costo de <strong>$4,500 MXN con IVA incluido</strong>. Sin embargo, <strong>en caso de autorizar el/los presupuesto(s) de reparación</strong>, el costo del diagnóstico <strong>ya no se cobrará</strong>, pagando únicamente lo autorizado en los trabajos.</p>
+          <p>• <strong>Revisiones Específicas Solicitadas:</strong> Revisiones puntuales solicitadas por el cliente (ej. diagnóstico de llantas, frenos específicos, etc.) conllevan costo por su realización.</p>
+          <p>• <strong>Tiempos de Proceso en Taller:</strong> El tiempo estimado de diagnóstico inicial es de <strong>2 a 3 días hábiles</strong> posteriores al ingreso de la unidad. Para diagnósticos complejos, el tiempo estimado es de <strong>3 a 5 días hábiles</strong>.</p>
+          <p>• <strong>Reclamación de Piezas (Garantía):</strong> Se requiere una revisión básica inicial. En caso de requerir el desmontaje de componentes, <strong>se solicitará la autorización previa del cliente</strong> antes de proceder.</p>
+        </div>
+
+        <div class="pt-2">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" id="acceptTerms" required class="mt-0.5 w-4 h-4 rounded border-silverMetal text-techBlue focus:ring-techBlue" />
+            <span class="text-xs text-white font-medium">
+              He leído, comprendido y <strong>acepto los términos, costos de diagnóstico inicial ($4,500 MXN con IVA), tiempos de proceso y condiciones del taller</strong> de Mercedes-Benz Puebla. (Requerido para enviar el reporte).
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <!-- BOTÓN DE ENVÍO -->
+      <div class="pt-2">
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-techBlue hover:bg-techBlueHover text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-techBlue/30 transition flex items-center justify-center gap-2">
+          <span>Enviar Pre-Diagnóstico Especializado (WhatsApp &amp; Correo)</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <!-- MODAL DE ÉXITO Y OPCIONES DE ENVÍO -->
+  <div id="successModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slateDark border mb-border rounded-3xl max-w-md w-full p-6 sm:p-8 text-center space-y-4 shadow-2xl">
+      <div class="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto text-xl font-bold">
+        ✓
+      </div>
+      <div>
+        <h3 class="text-base font-bold text-white">¡Pre-Diagnóstico Técnico Generado!</h3>
+        <p class="text-xs text-silverMetal/70 mt-1 leading-relaxed">
+          Elija el medio para enviar su reporte especializado y constancia de aceptación a Mercedes-Benz Puebla:
+        </p>
+      </div>
+      <div class="space-y-2.5 pt-2">
+        <!-- WhatsApp Asesor: 2227069571 -> 5212227069571 -->
+        <a id="whatsappShareBtn" href="#" target="_blank" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white flex items-center justify-center gap-2 transition shadow-lg">
+          💬 Enviar por WhatsApp (222 706 9571)
+        </a>
+        <!-- Correo Asesor: asesor3@mbnezpuebla.com.mx -->
+        <a id="emailShareBtn" href="#" class="w-full py-3 rounded-xl bg-techBlue hover:bg-techBlueHover text-xs font-semibold text-white flex items-center justify-center gap-2 transition shadow-lg">
+          ✉️ Enviar por Correo (asesor3@mbnezpuebla.com.mx)
+        </a>
+        <button onclick="closeModal()" class="w-full py-2.5 rounded-xl bg-slateCard hover:bg-slate-800 text-xs font-medium text-silverMetal border mb-border transition">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-[11px] text-silverMetal/40">
+    Mercedes-Benz Puebla · Portal Oficial de Pre-Diagnóstico Xentry y Aceptación de Taller
+  </footer>
+
+  <script>
+    function submitPreDiagnosis(event) {
+      event.preventDefault();
+
+      const acceptCheckbox = document.getElementById('acceptTerms');
+      if (!acceptCheckbox.checked) {
+        alert('Debe aceptar los términos y condiciones de taller para continuar.');
+        return;
+      }
+
+      const model = document.getElementById('carModel').value || 'No especificado';
+      
+      const checkboxes = document.querySelectorAll('input[name="symptom_area"]:checked');
+      const areas = checkboxes.length > 0 ? Array.from(checkboxes).map(cb => cb.value).join(' | ') : 'Ninguna categoría específica';
+
+      const warnings = document.querySelectorAll('input[name="warning_lights"]:checked');
+      const warningList = warnings.length > 0 ? Array.from(warnings).map(cb => cb.value).join(', ') : 'Ninguno seleccionado';
+
+      const temp = document.getElementById('condTemp').value;
+      const road = document.getElementById('condRoad').value;
+      const weather = document.getElementById('condWeather').value;
+      const trigger = document.getElementById('condTrigger').value;
+      const timeElapsed = document.getElementById('timeElapsed').value || 'No especificado';
+      const frequency = document.getElementById('frequency').value;
+      const desc = document.getElementById('freeDescription').value || 'Sin descripción adicional';
+
+      const mediaInput = document.getElementById('mediaFile');
+      const hasMedia = mediaInput.files && mediaInput.files.length > 0;
+      const mediaName = hasMedia ? mediaInput.files[0].name : 'Ningún archivo adjunto';
+
+      // Texto formateado para WhatsApp con constancia de aceptación y preguntas profundas
+      const waText = `*PRE-DIAGNÓSTICO TÉCNICO AVANZADO - MB PUEBLA*%0A` +
+        `✅ *Términos Aceptados* (Diagnóstico inicial $4,500 con IVA condonado al autorizar, tiempos 2-5 días, recorrido obligatorio con Jefe de Taller).%0A%0A` +
+        `🚗 *Modelo:* ${encodeURIComponent(model)}%0A` +
+        `⚙️ *Síntomas:* ${encodeURIComponent(areas)}%0A` +
+        `⚠️ *Testigos:* ${encodeURIComponent(warningList)}%0A` +
+        `📁 *Evidencia adjunta:* ${encodeURIComponent(mediaName)}%0A` +
+        `🌡️ *Momento:* ${encodeURIComponent(temp)}%0A` +
+        `🛣️ *Camino:* ${encodeURIComponent(road)}%0A` +
+        `🌦️ *Clima:* ${encodeURIComponent(weather)}%0A` +
+        `⚡ *Detonante:* ${encodeURIComponent(trigger)}%0A` +
+        `⏱️ *Antigüedad:* ${encodeURIComponent(timeElapsed)} (${encodeURIComponent(frequency)})%0A` +
+        `📝 *Notas:* ${encodeURIComponent(desc)}`;
+
+      // WhatsApp: 2227069571 (Prefijo México 521)
+      const whatsappPhone = "5212227069571";
+      document.getElementById('whatsappShareBtn').href = `https://wa.me/${whatsappPhone}?text=${waText}`;
+
+      // Correo: asesor3@mbnezpuebla.com.mx
+      const emailRecipient = "asesor3@mbnezpuebla.com.mx";
+      const emailSubject = encodeURIComponent(`Pre-Diagnóstico Técnico Especializado - Unidad: ${model}`);
+      const emailBody = encodeURIComponent(
+        `Estimado Asesor (asesor3@mbnezpuebla.com.mx),
+
+` +
+        `El cliente ha completado el formulario avanzado de pre-diagnóstico técnico y ha marcado la CASILLA DE ACEPTACIÓN DE TÉRMINOS Y CONDICIONES DE TALLER.
+
+` +
+        `--- CONSTANCIA DE TÉRMINOS ACEPTADOS ---
+` +
+        `[ ✓ ] Recorrido obligatorio con el Jefe de Taller el día de la cita (para ruidos o intermitentes).
+` +
+        `[ ✓ ] Costo de diagnóstico inicial: $4,500 MXN con IVA (condonado en su totalidad al autorizar presupuesto de reparación).
+` +
+        `[ ✓ ] Tiempos de proceso: 2-3 días hábiles (estándar) o 3-5 días hábiles (complejos).
+` +
+        `[ ✓ ] Autorización previa requerida antes de desarmar componentes en taller.
+
+` +
+        `--- REPORTE TÉCNICO DE INGENIERÍA ---
+` +
+        `- Modelo / Clase: ${model}
+` +
+        `- Categoría de síntomas: ${areas}
+` +
+        `- Testigos encendidos: ${warningList}
+` +
+        `- Archivo de evidencia adjunto: ${mediaName}
+` +
+        `- Momento de aparición: ${temp}
+` +
+        `- Condición de camino/velocidad: ${road}
+` +
+        `- Factor ambiental/clima: ${weather}
+` +
+        `- Posible evento detonante: ${trigger}
+` +
+        `- Antigüedad del problema: ${timeElapsed}
+` +
+        `- Frecuencia de aparición: ${frequency}
+` +
+        `- Descripción del cliente: ${desc}
+
+` +
+        `Enviado desde el Portal de Pre-Diagnóstico Xentry (Mercedes-Benz Puebla).`
+      );
+      document.getElementById('emailShareBtn').href = `mailto:${emailRecipient}?subject=${emailSubject}&body=${emailBody}`;
+
+      // Mostrar modal de éxito
+      document.getElementById('successModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('successModal').classList.add('hidden');
+      document.getElementById('preDiagForm').reset();
+    }
+  </script>
+</body>
+</html>
