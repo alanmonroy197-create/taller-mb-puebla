@@ -74,7 +74,7 @@
       Formulario de Pre-Diagnóstico Técnico Integral
     </h1>
     <p class="text-xs text-silverMetal/70 mt-2 max-w-xl mx-auto leading-relaxed">
-      Cuestionario de ingeniería avanzado diseñado por nuestros técnicos expertos. Proporcione los detalles precisos y adjunte evidencia para preparar el sistema <strong>Xentry Diagnosis</strong> antes de su llegada al taller.
+      Cuestionario de ingeniería avanzado diseñado por nuestros técnicos expertos. Proporcione los detalles precisos para preparar el sistema <strong>Xentry Diagnosis</strong> antes de su llegada al taller.
     </p>
   </header>
 
@@ -220,15 +220,14 @@
         </div>
       </div>
 
-      <!-- 4. ADJUNTAR FOTOS O VIDEOS DE EVIDENCIA -->
-      <div class="space-y-2 pt-3 border-t mb-border">
-        <label class="block text-xs font-semibold uppercase tracking-wider text-silverMetal">
-          4. Adjuntar Evidencia (Foto del testigo en tablero o video corto del ruido/anomalía)
-        </label>
-        <div class="p-4 rounded-xl border border-dashed border-silverMetal/30 bg-obsidian/50 text-center">
-          <input type="file" id="mediaFile" accept="image/*,video/*" class="w-full text-xs text-silverMetal file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-techBlue file:text-white hover:file:bg-techBlueHover file:cursor-pointer cursor-pointer" />
-          <p class="text-[11px] text-silverMetal/60 mt-2">Formatos permitidos: JPG, PNG, MP4, MOV (Máx. 25MB). Ayuda al técnico a identificar la falla de inmediato.</p>
-        </div>
+      <!-- 4. LEYENDA CLARA PARA COMPARTIR FOTOS/VIDEOS POR WHATSAPP -->
+      <div class="p-4 rounded-xl border border-techBlue/30 bg-techBlue/10 text-xs text-silverMetal space-y-1.5">
+        <p class="font-bold text-white flex items-center gap-2">
+          <span>📷</span> <span>Nota sobre evidencias (Fotos o Videos):</span>
+        </p>
+        <p class="text-silverMetal/90 leading-relaxed">
+          Si cuenta con una fotografía del testigo encendido en el tablero o un video corto del ruido o anomalía, <strong>puede enviarlos directamente por WhatsApp a este chat</strong> justo después de enviar su cuestionario para que el técnico los analice.
+        </p>
       </div>
 
       <!-- 5. CUESTIONARIO TÉCNICO PROFUNDO -->
@@ -403,17 +402,13 @@
       const frequency = document.getElementById('frequency').value;
       const desc = document.getElementById('freeDescription').value || 'Sin descripción adicional';
 
-      const mediaInput = document.getElementById('mediaFile');
-      const hasMedia = mediaInput.files && mediaInput.files.length > 0;
-      const mediaName = hasMedia ? mediaInput.files[0].name : 'Ningún archivo adjunto';
-
-      // Texto formateado para WhatsApp con constancia de aceptación y preguntas profundas
+      // Texto formateado para WhatsApp indicando que compartirá la evidencia en el chat
       const waText = `*PRE-DIAGNÓSTICO TÉCNICO AVANZADO - MB PUEBLA*%0A` +
         `✅ *Términos Aceptados* (Diagnóstico inicial $4,500 con IVA condonado al autorizar, tiempos 2-5 días, recorrido obligatorio con Jefe de Taller).%0A%0A` +
         `🚗 *Modelo:* ${encodeURIComponent(model)}%0A` +
         `⚙️ *Síntomas:* ${encodeURIComponent(areas)}%0A` +
         `⚠️ *Testigos:* ${encodeURIComponent(warningList)}%0A` +
-        `📁 *Evidencia adjunta:* ${encodeURIComponent(mediaName)}%0A` +
+        `📷 *(Evidencia fotográfica/video se compartirá a continuación en este chat)*%0A` +
         `🌡️ *Momento:* ${encodeURIComponent(temp)}%0A` +
         `🛣️ *Camino:* ${encodeURIComponent(road)}%0A` +
         `🌦️ *Clima:* ${encodeURIComponent(weather)}%0A` +
@@ -454,7 +449,7 @@
 ` +
         `- Testigos encendidos: ${warningList}
 ` +
-        `- Archivo de evidencia adjunto: ${mediaName}
+        `- Evidencia multimedia: El cliente enviará fotos/videos directamente en el chat de WhatsApp.
 ` +
         `- Momento de aparición: ${temp}
 ` +
